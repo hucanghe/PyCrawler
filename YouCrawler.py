@@ -2,6 +2,7 @@ import csv
 import requests
 from datetime import date
 from html import escape
+import sys
 
 class Video:
     def __init__(self, watch_link, name, pub_time, title):
@@ -87,9 +88,13 @@ def convert_to_table(videos, table_name):
     html += "</table>\n"
     return html
 
-def main():
-    input_file = "youtubers.csv"
-    result_file = "youtubers_" + str(date.today()) + ".html"
+def main(arg=None):
+    # Set the internal default value
+    default_arg = "youtubers"
+    input_arg = arg if arg else default_arg
+
+    input_file = input_arg + ".csv"
+    result_file = input_arg + "_" + str(date.today()) + ".html"
 
     you_tubers = []
     try:
@@ -132,4 +137,9 @@ def main():
         print(f"Error writing to " + result_file + ": {e}")
 
 if __name__ == "__main__":
-    main()
+    # Check if any command-line arguments were provided
+    if len(sys.argv) > 1:
+        input_arg = sys.argv[1]
+    else:
+        input_arg = None
+    main(input_arg)
