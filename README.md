@@ -10,6 +10,6 @@ Store the python and the csv file in a directory and execute the python file in 
 
 If you want to use another input file, simply add the filename to the command line, e.g.:
 
-   py YouCrawler youtubersAkt
+    py YouCrawler youtubersAkt
 
 A html file for today is then created and could be viewed - click a link to watch the video!
